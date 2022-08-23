@@ -1,0 +1,31 @@
+<ion-router-outlet id="content"></ion-router-outlet>
+
+<ion-toolbar color="primary">
+  <ion-buttons slot="start">
+    <ion-menu-button autoHide="false"></ion-menu-button>
+
+  </ion-buttons>
+
+  <ion-title>Estatística</ion-title>
+</ion-toolbar>
+
+<ion-content class="background">
+
+  <ion-list class="ion-list-background">
+    <ion-item color="translucent">
+      <h4><strong>O gráfico abaixo mostra estatísticas sobre as solicitações</strong></h4>
+    </ion-item>
+  </ion-list>
+
+  <ion-card style="margin-top: 5%;">
+    <ion-card-header>
+      <strong>Por status de solicitação</strong>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas baseChart [type]="'pie'" [datasets]="pieChartDatasets" [labels]="pieChartLabels"
+        [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
+      </canvas>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

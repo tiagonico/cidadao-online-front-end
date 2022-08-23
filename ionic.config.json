@@ -1,0 +1,7 @@
+{
+  "name": "CidadaoOnline",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

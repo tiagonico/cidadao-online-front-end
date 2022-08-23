@@ -1,0 +1,32 @@
+<ion-router-outlet id="content"></ion-router-outlet>
+
+<ion-toolbar color="primary">
+  <ion-buttons slot="start">
+    <ion-menu-button autoHide="false"></ion-menu-button>
+
+  </ion-buttons>
+
+  <ion-title>Minhas Solicitações</ion-title>
+</ion-toolbar>
+
+<ion-content class="background">
+
+  <ion-list class="ion-list-background">
+    <ion-item detail
+      [color]="item.status === 'Solicitado' ? 'color_solicitado' : item.status === 'Em andamento' ? 'color_em_andamento' : item.status === 'Concluído' ? 'color_concluido' : 'color_rejeitado'"
+      *ngFor="let item of items" (click)="detalhe(item)">
+
+      <ion-avatar slot="start">
+        <img src={{item.tipoSolicitacao.imgUrl}}>
+      </ion-avatar>
+      <ion-label text-wrap>
+        <h2>Tipo: {{item.tipoSolicitacao.nome}}</h2>
+        <p>Data: {{item.dataSolicitacao}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+
+
+
+</ion-content>

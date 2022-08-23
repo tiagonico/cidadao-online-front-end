@@ -1,0 +1,22 @@
+<ion-menu side="start" menuId="custom" contentId="contentGestor" class="my-custom-menu">
+
+  <ion-header>
+    <ion-toolbar color="tertiary">
+      <ion-title>Cidadão Online</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      
+      <ion-item button (click)="inicio()">Início</ion-item>
+      <ion-item button (click)="dashboard()">Dashboard</ion-item>
+      <ion-item button (click)="estatistica()">Estatística</ion-item>
+      <ion-item button (click)="tipoSolicitacao()">Tipo solicitação</ion-item>
+      <ion-item button (click)="logout()">Sair</ion-item>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-router-outlet id="contentGestor"></ion-router-outlet>

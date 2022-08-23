@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalhes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+
+  <h4 class='text'><strong>Tipo de Solicitação:</strong></h4>
+  <p class='text'>{{nome}}</p>
+
+  <h4 class='text'><strong>Descrição:</strong></h4>
+  <p class='text'>{{descricao}}</p>
+  <h4 class='text'><strong>Endereço:</strong></h4>
+  <p class='text'>{{endereco}}</p>
+
+  <div id="map"></div>
+
+  <h4 class='text'><strong>Data de solicitação:</strong></h4>
+  <p class='text'>{{dataSolicitacao}}</p>
+  <h4 class='text'><strong>Status:</strong></h4>
+
+  <p class='text'>{{status}}</p>
+
+  <div *ngIf="status == 'Rejeitado'">
+
+    <h4 class='text'><strong>Motivo rejeição:</strong></h4>
+    <p class='text'>{{motivo}}</p>
+  </div>
+
+  <h4 *ngIf="imgUrl!=null" class='text'> <strong>Imagem:</strong></h4>
+  <div style="margin: 5%;">
+    <img *ngIf="imgUrl!=null" src={{imgUrl}}>
+  </div>
+
+
+  <div style="margin-bottom: 5%;" *ngIf="status == 'Solicitado'">
+    <ion-button style="width: 40%;margin-left: 7.5%;margin-right: 2.5%;" id="open-modal" color="danger">Rejeitar
+    </ion-button>
+    <ion-button style="width: 40%;margin-left: 2.5%;margin-right: 7.5%;" color="primary" (click)="emAndamento()">Em
+      andamento</ion-button>
+  </div>
+
+  <div style="margin-bottom: 5%;" *ngIf="status == 'Em andamento'">
+    <ion-button style="margin-left: 10%;margin-right: 10%;" expand="block" color="success" (click)="concluido()">
+      Concluído</ion-button>
+  </div>
+
+  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title>Rejeitar solicitação</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="background">
+
+
+        <ion-list class="ion-list-background">
+
+          <ion-item style="margin-top: 5%;margin-bottom: 5%;margin-left: 5%;margin-right: 5%;" color="translucent">
+            <ion-label position="stacked">Digite o motivo da rejeição</ion-label>
+            <ion-input type="text" placeholder="Motivo" [(ngModel)]="name"></ion-input>
+          </ion-item>
+
+        </ion-list>
+
+        <ion-button style="width: 40%;margin-left: 7.5%;margin-right: 2.5%;" (click)="cancel()" color="danger">Cancelar
+        </ion-button>
+        <ion-button style="width: 40%;margin-left: 2.5%;margin-right: 7.5%;" (click)="confirm()" color="success"
+          [strong]="true">Confirmar</ion-button>
+
+
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+
+</ion-content>

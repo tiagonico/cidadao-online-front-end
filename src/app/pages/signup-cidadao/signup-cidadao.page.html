@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registrar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+
+  <form [formGroup]="formGroup" (ngSubmit)="signupUser(); $event.preventDefault()">
+
+    <ion-list class="ion-list-background" style="margin-left: 5%;margin-right: 5%;">
+      <ion-item color="translucent">
+        <ion-label position="floating">Nome completo*</ion-label>
+        <ion-input formControlName="nome" type="text"></ion-input>
+      </ion-item>
+      <ion-item color="translucent">
+        <ion-label position="floating">Email*</ion-label>
+        <ion-input formControlName="email" type="email"></ion-input>
+      </ion-item>
+
+
+      <ion-item color="translucent">
+        <ion-label position="floating">CPF*</ion-label>
+        <ion-input (ionInput)="updateWithMask($event)" formControlName="cpf" [(ngModel)]="cpf" name="cpf" type="text">
+        </ion-input>
+      </ion-item>
+
+      <ion-item color="translucent">
+        <ion-label position="floating">Senha*</ion-label>
+        <ion-input formControlName="senha" type="password"></ion-input>
+      </ion-item>
+
+    </ion-list>
+    <ion-button type="submit" expand="block">Criar conta</ion-button>
+  </form>
+
+</ion-content>

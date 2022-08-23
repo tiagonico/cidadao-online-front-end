@@ -1,0 +1,59 @@
+<ion-router-outlet id="content"></ion-router-outlet>
+
+<ion-header class="mybackground">
+
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+  
+    </ion-buttons>
+    <ion-button slot="end" (click)="this.showFilter = !this.showFilter" color="rgba(0,0,0,0)">
+      <img width="24px" height="24px" src="/assets/icon/lupa.webp">
+    </ion-button>
+    
+    <ion-title>Ínicio Gestor</ion-title>
+  </ion-toolbar>
+
+  <div *ngIf="showFilter" >
+    <ion-list style="margin-left: 5%;margin-right: 5%;" class="ion-list-background">
+      <ion-item color="translucent">
+        <ion-select interface="popover" (ionChange)="handleChangeStatus($event)" placeholder="Status">
+          <ion-select-option value="Todos">Todos</ion-select-option>
+          <ion-select-option value="Solicitado">Solicitado</ion-select-option>
+          <ion-select-option value="Em andamento">Em andamento</ion-select-option>
+          <ion-select-option value="Rejeitado">Rejeitado</ion-select-option>
+          <ion-select-option value="Concluído">Concluído</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  
+    <ion-list style="margin-left: 5%;margin-right: 5%;" class="ion-list-background">
+      <ion-item color="translucent">
+        <ion-select interface="popover" (ionChange)="handleChangeTipoSolicitacao($event)" placeholder="Tipo solicitação">
+          <ion-select-option color="rgba(255,255,255,1)"value="Todos">Todos</ion-select-option>
+          <ion-select-option *ngFor="let tipoSolicitacao of tiposSolicitacao" [value]="tipoSolicitacao.nome">{{tipoSolicitacao.nome}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  
+    <ion-button color="primary" style="margin-left: 5%;margin-right: 5%;margin-bottom: 2.5%;" expand="block" (click)=filtro()>Filtrar</ion-button>
+  </div>
+</ion-header>
+
+<ion-content class="background">
+
+  <ion-list class="ion-list-background">
+    <ion-item detail [color]="item.status === 'Solicitado' ? 'color_solicitado' : item.status === 'Em andamento' ? 'color_em_andamento' : item.status === 'Concluído' ? 'color_concluido' : 'color_rejeitado'" (click)="detalhe(item)" *ngFor="let item of items" >
+
+      <ion-avatar slot="start">
+        <img
+          src={{item.tipoSolicitacao.imgUrl}}>
+      </ion-avatar>
+      <ion-label text-wrap>
+        <h2>Tipo: {{item.tipoSolicitacao.nome}}</h2>
+        <p>Data: {{item.dataSolicitacao}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

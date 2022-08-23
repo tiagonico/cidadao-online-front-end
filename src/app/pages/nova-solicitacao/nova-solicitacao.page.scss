@@ -1,0 +1,34 @@
+.map-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 30px;
+}
+
+.map-frame {
+  border: 2px solid black;
+  height: 100%;
+}
+
+#map {
+  min-height: 50%;
+  height: 50%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+ion-content.background{
+  --background: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1) 0 0/100% 100% no-repeat;
+}
+ion-card.background{
+  --background: rgba(255, 255, 255, 0.3);
+}
+
+.button{
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}

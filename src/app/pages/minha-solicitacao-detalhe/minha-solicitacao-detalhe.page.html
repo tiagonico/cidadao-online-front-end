@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalhes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+
+  <h4 class='text'> <strong>Tipo de Solicitação:</strong></h4>
+  <p class='text'>{{nome}}</p>
+  <h4 class='text'> <strong>Descrição:</strong></h4>
+  <p class='text'>{{descricao}}</p>
+  <h4 class='text'> <strong>Endereço:</strong></h4>
+  <p class='text'>{{endereco}}</p>
+
+  <div id="map"></div>
+
+  <h4 class='text'> <strong>Data de solicitação:</strong></h4>
+  <p class='text'>{{dataSolicitacao}}</p>
+  <h4 class='text'> <strong>Status:</strong></h4>
+  <ion-text>
+    <p class='text'>{{status}}</p>
+  </ion-text>
+  <div *ngIf="status == 'Rejeitado'">
+
+    <h4 class='text'> <strong>Motivo rejeição:</strong></h4>
+    <p class='text'>{{motivo}}</p>
+  </div>
+
+  <h4 *ngIf="imgUrl!=null" class='text'> <strong>Imagem:</strong></h4>
+  <div style="margin: 5%;">
+    <img *ngIf="imgUrl!=null" src={{imgUrl}}>
+  </div>
+
+
+</ion-content>

@@ -1,0 +1,83 @@
+<ion-toolbar color="primary">
+  <ion-buttons slot="start">
+    <ion-menu-button autoHide="false"></ion-menu-button>
+
+  </ion-buttons>
+
+  <ion-title>Tipo solicitação</ion-title>
+</ion-toolbar>
+
+<ion-content class="background">
+
+  <ion-list class="ion-list-background">
+    <ion-item color="translucent" *ngFor="let item of items">
+
+      <ion-avatar slot="start">
+        <img src={{item.imgUrl}}>
+      </ion-avatar>
+      <ion-label text-wrap>
+        <h2>{{item.nome}}</h2>
+      </ion-label>
+      <ion-button slot="end" color="danger" (click)="deletar(item)">
+        <img width="24px" height="24px" src="/assets/icon/trash.png">
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title>Adicionar Tipo Solicitação</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="background">
+
+        <ion-list class="ion-list-background">
+
+          <ion-item style="margin-top: 5%;margin-bottom: 5%;margin-left: 5%;margin-right: 5%;" color="translucent">
+
+            <ion-label position="stacked">Digite o nome do tipo solicitação</ion-label>
+            <ion-input type="text" placeholder="Tipo Solicitação" [(ngModel)]="name"></ion-input>
+          </ion-item>
+        </ion-list>
+
+        <ion-card class="background">
+          <ion-card-header>
+            <strong>Imagem:</strong>
+          </ion-card-header>
+          <ion-item color="translucent" *ngIf="picture!=null">
+            <img [src]="picture">
+          </ion-item>
+          <div color="translucent" style="margin-bottom: 5%;" *ngIf="picture==null; else elseTemplate" >
+
+            <ion-button style="width: 90%;margin-left: 5%;margin-right: 5%;" (click)="getGalleryPicture()"
+              [disabled]="cameraOn">Galeria</ion-button>
+          </div>
+          <ng-template color="translucent" #elseTemplate>
+            <div color="translucent" style="margin-bottom: 5%;margin-top: 5%;">            
+            <ion-button style="width: 42.5%;margin-left: 5%;margin-right: 2.5%;" (click)="getGalleryPicture()"
+              [disabled]="cameraOn">Galeria</ion-button>
+            <ion-button color="danger" style="width: 42.5%;margin-left: 2.5%;margin-right: 5%;" (click)="cancelGallery()">
+              Descartar</ion-button>
+            </div>
+          </ng-template>
+        </ion-card>
+
+        <ion-button style="width: 40%;margin-left: 7.5%;margin-right: 2.5%;" (click)="cancel()" color="danger">Cancelar
+        </ion-button>
+        <ion-button style="width: 40%;margin-left: 2.5%;margin-right: 7.5%;" (click)="confirm()" color="success"
+          [strong]="true">Confirmar</ion-button>
+
+
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button id="open-modal">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

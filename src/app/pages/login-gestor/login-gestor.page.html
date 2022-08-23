@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Área Gestor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+
+  <img src="assets/imgs/logo_.png">
+
+  <form>
+
+    <ion-list class="ion-list-background" style="margin-left: 5%;margin-right: 5%;">
+
+      <ion-item color="translucent">
+        <ion-label position="floating">CPF</ion-label>
+        <ion-input (ionInput)="updateWithMask($event)" [(ngModel)]="creds.cpf" name="cpf" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item color="translucent">
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input [(ngModel)]="creds.senha" name="senha" type="password"></ion-input>
+      </ion-item>
+
+      <ion-button class="button" type="submit" expand="block" (click)="login()">Entrar</ion-button>
+
+    </ion-list>
+  </form>
+
+</ion-content>
