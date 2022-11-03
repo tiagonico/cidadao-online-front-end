@@ -22,13 +22,19 @@ export const environment = {
 };
 ```
 
-4️⃣ Rode esse comando abaixo no terminal para instalar os pacotes:
+4️⃣  No arquivo config/api.config.ts coloque a url do Back-End, caso esteja rodando localmente provelmente será:
+ 
+ ```
+ http://localhost:8080
+ ```
+
+5️⃣ Rode esse comando abaixo no terminal para instalar os pacotes:
 
 ```
 npm install
 ```
 
-5️⃣ Inicie a aplicação:
+6️⃣ Inicie a aplicação:
 
 ```
 ng serve
